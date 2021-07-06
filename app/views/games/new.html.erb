@@ -1,12 +1,14 @@
-<h1>New Game</h1>
-<div class="grid-container">
-  <div class="grid-item">1</div>
-  <div class="grid-item">2</div>
-  <div class="grid-item">3</div>
-  <div class="grid-item">4</div>
-  <div class="grid-item">5</div>
-  <div class="grid-item">6</div>
-  <div class="grid-item">7</div>
-  <div class="grid-item">8</div>
-  <div class="grid-item">9</div>
+<div class="container">
+    <h1>New Game</h1>
+    <div class="grid-container">
+        <% @letters.each do |letter| %>
+            <div class="grid-item"><%= letter %></div>
+        <% end %>
+    </div>
+    <form method='POST' action='score'>
+        <label>What is the longest word you can find?</label>
+        <input class='input-words' type="text" name='word'>
+        <input class='input-btn' type="submit" value='Write!'>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    </form>
 </div>
