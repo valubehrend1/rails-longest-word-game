@@ -7,6 +7,7 @@
     </div>
     <form method='POST' action='score'>
         <label>What is the longest word you can find?</label>
+        <%= hidden_field_tag :letters, @letters %>
         <input class='input-words' type="text" name='word'>
         <input class='input-btn' type="submit" value='Write!'>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
