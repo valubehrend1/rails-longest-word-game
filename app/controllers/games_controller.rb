@@ -1,3 +1,6 @@
+require 'json'
+require 'open-uri'
+
 class GamesController < ApplicationController
     attr_accessor :letters
     def new
@@ -25,5 +28,12 @@ class GamesController < ApplicationController
         grid_word.all? do |letter|
            user_word.count(letter) >= grid_word.count(letter)
         end
+    end
+
+    def url_reader
+        url = `https://wagon-dictionary.herokuapp.com/word`
+        english_words = JSON.parse(URI.open(url).read)
+        return english_words
+        raise
     end
 end
