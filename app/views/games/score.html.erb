@@ -1,13 +1,15 @@
-<h1>Result</h1>
-
-<% if @result %>
-  <% if @english_word %>
-    <p><strong>Congratulations!</strong> <%= @word %> is a valid English word!</p>
-  <% else %>
-    <p>Sorry but <strong><%= @word %></strong> does not seem to be a valid English word...</p>
-  <% end %>
-<% else %>
-  <p>Sorry but <strong><%= @word %></strong> can't be built out of <%= @letters %></p>
-<% end %>
-
-<%= link_to "Play again", new_path %>
+<div class="score-container">
+    <% if @result %>
+    <% if @english_word %>
+        <p class='result-title'>Congratulations!</p>
+        <p class='valid-word'><span class='choosen-word'><%= @word %></span> is a valid English word!</p>
+    <% else %>
+        <p class='result-title'>Sorry</p>
+        <p class='valid-word'><span class='choosen-word'><%= @word %></span> does not seem to be a valid English word...</p>
+    <% end %>
+    <% else %>
+        <p class='result-title'>Sorry</p>
+        <p class='valid-word'><span class='choosen-word'><%= @word %></span> can't be built out of <strong><%= @letters %></strong></p>
+    <% end %>
+    <%= link_to "Play again", new_path %>
+</div>
