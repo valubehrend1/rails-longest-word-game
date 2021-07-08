@@ -11,6 +11,7 @@ class GamesController < ApplicationController
         @word = params[:word]
         @letters = params[:letters]
         @result = include_letters?(@word, @letters)
+        @english_word = url_reader(@word)
         @display_result = result
     end
 
@@ -30,10 +31,9 @@ class GamesController < ApplicationController
         end
     end
 
-    def url_reader
-        url = `https://wagon-dictionary.herokuapp.com/word`
-        english_words = JSON.parse(URI.open(url).read)
-        return english_words
-        raise
+    def url_reader(word)
+        url = URI.open("https://wagon-dictionary.herokuapp.com/#{word}")
+        json = JSON.parse(url.read)
+        json['found']
     end
 end
